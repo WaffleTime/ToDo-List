@@ -10,7 +10,6 @@
 
 @interface AddItemViewController : UIViewController
 {
-    //IBOutlet UITextField textField;
 }
 
 - (IBAction)addItem:(id)sender;
