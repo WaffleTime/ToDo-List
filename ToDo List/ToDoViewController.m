@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 CS-360_Students. All rights reserved.
 //
 
-#import "testerViewController.h"
+#import "ToDoViewController.h"
 
-@interface testerViewController ()
+@interface ToDoViewController ()
 
 @end
 
-@implementation testerViewController
+@implementation ToDoViewController
 
 - (void)viewDidLoad
 {

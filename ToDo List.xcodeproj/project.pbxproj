@@ -18,7 +18,8 @@
 		C1C18D8317E909FF0042B751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C18D8217E909FF0042B751 /* Default-568h@2x.png */; };
 		C1C18D8617E909FF0042B751 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C18D8417E909FF0042B751 /* MainStoryboard_iPhone.storyboard */; };
 		C1C18D8917E909FF0042B751 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C18D8717E909FF0042B751 /* MainStoryboard_iPad.storyboard */; };
-		C1C18D8C17E909FF0042B751 /* testerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C18D8B17E909FF0042B751 /* testerViewController.m */; };
+		C1C18D8C17E909FF0042B751 /* ToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C18D8B17E909FF0042B751 /* ToDoViewController.m */; };
+		C1C18D9417E90EDF0042B751 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C18D9317E90EDF0042B751 /* AddItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +38,10 @@
 		C1C18D8217E909FF0042B751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C1C18D8517E909FF0042B751 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C1C18D8817E909FF0042B751 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		C1C18D8A17E909FF0042B751 /* testerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testerViewController.h; sourceTree = "<group>"; };
-		C1C18D8B17E909FF0042B751 /* testerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testerViewController.m; sourceTree = "<group>"; };
+		C1C18D8A17E909FF0042B751 /* ToDoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoViewController.h; sourceTree = "<group>"; };
+		C1C18D8B17E909FF0042B751 /* ToDoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoViewController.m; sourceTree = "<group>"; };
+		C1C18D9217E90EDF0042B751 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		C1C18D9317E90EDF0042B751 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +92,11 @@
 				C1C18D7C17E909FF0042B751 /* testerAppDelegate.m */,
 				C1C18D8417E909FF0042B751 /* MainStoryboard_iPhone.storyboard */,
 				C1C18D8717E909FF0042B751 /* MainStoryboard_iPad.storyboard */,
-				C1C18D8A17E909FF0042B751 /* testerViewController.h */,
-				C1C18D8B17E909FF0042B751 /* testerViewController.m */,
+				C1C18D8A17E909FF0042B751 /* ToDoViewController.h */,
+				C1C18D8B17E909FF0042B751 /* ToDoViewController.m */,
 				C1C18D7317E909FF0042B751 /* Supporting Files */,
+				C1C18D9217E90EDF0042B751 /* AddItemViewController.h */,
+				C1C18D9317E90EDF0042B751 /* AddItemViewController.m */,
 			);
 			path = "ToDo List";
 			sourceTree = "<group>";
@@ -180,7 +185,8 @@
 			files = (
 				C1C18D7917E909FF0042B751 /* main.m in Sources */,
 				C1C18D7D17E909FF0042B751 /* testerAppDelegate.m in Sources */,
-				C1C18D8C17E909FF0042B751 /* testerViewController.m in Sources */,
+				C1C18D8C17E909FF0042B751 /* ToDoViewController.m in Sources */,
+				C1C18D9417E90EDF0042B751 /* AddItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

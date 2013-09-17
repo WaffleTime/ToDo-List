@@ -1,26 +1,182 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="iuM-4y-gyg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
-        <scene sceneID="5">
+        <!--Add Item View Controller-->
+        <scene sceneID="EZa-8O-nqQ">
             <objects>
-                <viewController id="2" customClass="testerViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                <viewController id="HnV-YX-l5m" customClass="AddItemViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qJp-KX-qsq">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ti8-aG-B1t">
+                                <items>
+                                    <navigationItem title="Add Item" id="TNF-S4-utU">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="6Rt-mR-FlY">
+                                            <connections>
+                                                <segue destination="iuM-4y-gyg" kind="modal" id="02e-cF-tc6"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="cuH-Jd-RCg">
+                                            <connections>
+                                                <segue destination="iuM-4y-gyg" kind="modal" id="VtZ-mu-aiU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FZ5-Qe-gDO">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" type="user" id="MD4-YK-24y"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="216" type="user" id="icp-gC-rti"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="401148678.89137203">
+                                    <!--2013-09-17 22:11:18 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                                </timeZone>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a task!" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8u4-dC-KxD">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="taskEntered:" destination="I72-gx-zLy" eventType="editingDidEndOnExit" id="8VG-Oh-m74"/>
+                                    <action selector="taskEntered:" destination="I72-gx-zLy" eventType="touchUpOutside" id="YNJ-9w-131"/>
+                                    <outlet property="delegate" destination="HnV-YX-l5m" id="Iyz-N6-k2b"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5u-8K-DtZ">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Task Start Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onS-gK-Zvc">
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FZ5-Qe-gDO" firstAttribute="leading" secondItem="qJp-KX-qsq" secondAttribute="leading" type="default" id="0cZ-WP-Ad1"/>
+                            <constraint firstItem="FZ5-Qe-gDO" firstAttribute="top" secondItem="onS-gK-Zvc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1gn-cz-C9F"/>
+                            <constraint firstAttribute="trailing" secondItem="8u4-dC-KxD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="5dq-1d-4e5"/>
+                            <constraint firstAttribute="trailing" secondItem="p5u-8K-DtZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8kn-Ha-OfI"/>
+                            <constraint firstItem="FZ5-Qe-gDO" firstAttribute="trailing" secondItem="qJp-KX-qsq" secondAttribute="trailing" type="default" id="ZW5-4T-Cf6"/>
+                            <constraint firstItem="ti8-aG-B1t" firstAttribute="leading" secondItem="qJp-KX-qsq" secondAttribute="leading" type="default" id="Zqy-qu-Tyd"/>
+                            <constraint firstItem="p5u-8K-DtZ" firstAttribute="top" secondItem="qJp-KX-qsq" secondAttribute="top" constant="60" id="dI9-JU-vR3"/>
+                            <constraint firstAttribute="trailing" secondItem="onS-gK-Zvc" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dmn-LM-KoM"/>
+                            <constraint firstItem="8u4-dC-KxD" firstAttribute="leading" secondItem="qJp-KX-qsq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="o0v-J9-SD4"/>
+                            <constraint firstItem="onS-gK-Zvc" firstAttribute="leading" secondItem="qJp-KX-qsq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="r1a-PM-YxK"/>
+                            <constraint firstItem="8u4-dC-KxD" firstAttribute="top" secondItem="p5u-8K-DtZ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rHo-uW-4xt"/>
+                            <constraint firstItem="p5u-8K-DtZ" firstAttribute="leading" secondItem="qJp-KX-qsq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="u7W-Rk-zg3"/>
+                            <constraint firstItem="ti8-aG-B1t" firstAttribute="top" secondItem="qJp-KX-qsq" secondAttribute="top" type="default" id="wlh-jH-pSp"/>
+                            <constraint firstItem="ti8-aG-B1t" firstAttribute="trailing" secondItem="qJp-KX-qsq" secondAttribute="trailing" type="default" id="yZv-EE-vB2"/>
+                            <constraint firstItem="onS-gK-Zvc" firstAttribute="top" secondItem="qJp-KX-qsq" secondAttribute="top" constant="152" id="zFE-NM-pe3"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I72-gx-zLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1634" y="120"/>
+        </scene>
+        <!--To Do View Controller - ToDo List-->
+        <scene sceneID="Fco-ng-1dm">
+            <objects>
+                <tableViewController id="L7M-K3-TC4" customClass="ToDoViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="947-Wy-llW">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="qKM-v2-hl4">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="L7M-K3-TC4" id="rJV-RL-LJF"/>
+                            <outlet property="delegate" destination="L7M-K3-TC4" id="MGD-Rb-Npr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="ToDo List" id="srQ-nS-f9S">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="0uK-HR-FMd">
+                            <connections>
+                                <segue destination="HnV-YX-l5m" kind="modal" id="Okg-dD-hDB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RZY-fa-aaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="120"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5TF-TJ-4xq">
+            <objects>
+                <navigationController id="iuM-4y-gyg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="God-2F-QIO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L7M-K3-TC4" kind="relationship" relationship="rootViewController" id="HKT-OR-dtI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="00i-ga-9cE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="120"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AddItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="taskEntered:" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ToDoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="VtZ-mu-aiU"/>
+    </inferredMetricsTieBreakers>
 </document>

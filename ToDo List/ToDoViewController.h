@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface testerViewController : UIViewController
+@interface ToDoViewController : UITableViewController
 
 @end
