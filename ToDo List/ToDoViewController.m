@@ -163,6 +163,7 @@
     NSLog(@"delete mode!");
 }
 
+//Make sure that this method updates the ID's of the subsequent rows in the database after removing one. Do this because the db rows are dependent on the index of the table's rows. And deleting a row will move cells up a row.
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
