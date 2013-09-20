@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <sqlite3.h>
+#import "NotificationList.h"
 
 @interface ToDoViewController : UITableViewController
+{
+    NotificationList *notifs;
+    sqlite3 *taskDB;
+    NSString *dbPathString;
+}
+
+- (void) createOrOpenDB;
+
+- (IBAction)reloadTable;
+
 
 @end

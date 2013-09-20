@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1A71ADB17EA3F2100474BFD /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A71ADA17EA3F2100474BFD /* TaskList.m */; };
-		C1A71ADE17EA402300474BFD /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A71ADD17EA402300474BFD /* Task.m */; };
+		C1B3C55817EB8B6000E0C25F /* NotificationList.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B3C55717EB8B6000E0C25F /* NotificationList.m */; };
 		C1C18D6D17E909FF0042B751 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D6C17E909FF0042B751 /* UIKit.framework */; };
 		C1C18D6F17E909FF0042B751 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D6E17E909FF0042B751 /* Foundation.framework */; };
 		C1C18D7117E909FF0042B751 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D7017E909FF0042B751 /* CoreGraphics.framework */; };
@@ -22,13 +21,12 @@
 		C1C18D8917E909FF0042B751 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C18D8717E909FF0042B751 /* MainStoryboard_iPad.storyboard */; };
 		C1C18D8C17E909FF0042B751 /* ToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C18D8B17E909FF0042B751 /* ToDoViewController.m */; };
 		C1C18D9417E90EDF0042B751 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C18D9317E90EDF0042B751 /* AddItemViewController.m */; };
+		C1E91D4817EBB27C0074B918 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E91D4717EBB27C0074B918 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C1A71AD917EA3F2100474BFD /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskList.h; sourceTree = "<group>"; };
-		C1A71ADA17EA3F2100474BFD /* TaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskList.m; sourceTree = "<group>"; };
-		C1A71ADC17EA402300474BFD /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		C1A71ADD17EA402300474BFD /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		C1B3C55617EB8B6000E0C25F /* NotificationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationList.h; sourceTree = "<group>"; };
+		C1B3C55717EB8B6000E0C25F /* NotificationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationList.m; sourceTree = "<group>"; };
 		C1C18D6917E909FF0042B751 /* ToDo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C18D6C17E909FF0042B751 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C1C18D6E17E909FF0042B751 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,6 +46,7 @@
 		C1C18D8B17E909FF0042B751 /* ToDoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoViewController.m; sourceTree = "<group>"; };
 		C1C18D9217E90EDF0042B751 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
 		C1C18D9317E90EDF0042B751 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		C1E91D4717EBB27C0074B918 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1E91D4817EBB27C0074B918 /* libsqlite3.dylib in Frameworks */,
 				C1C18D6D17E909FF0042B751 /* UIKit.framework in Frameworks */,
 				C1C18D6F17E909FF0042B751 /* Foundation.framework in Frameworks */,
 				C1C18D7117E909FF0042B751 /* CoreGraphics.framework in Frameworks */,
@@ -67,6 +67,7 @@
 		C1C18D6017E909FF0042B751 = {
 			isa = PBXGroup;
 			children = (
+				C1E91D4717EBB27C0074B918 /* libsqlite3.dylib */,
 				C1C18D7217E909FF0042B751 /* ToDo List */,
 				C1C18D6B17E909FF0042B751 /* Frameworks */,
 				C1C18D6A17E909FF0042B751 /* Products */,
@@ -103,10 +104,8 @@
 				C1C18D7317E909FF0042B751 /* Supporting Files */,
 				C1C18D9217E90EDF0042B751 /* AddItemViewController.h */,
 				C1C18D9317E90EDF0042B751 /* AddItemViewController.m */,
-				C1A71AD917EA3F2100474BFD /* TaskList.h */,
-				C1A71ADA17EA3F2100474BFD /* TaskList.m */,
-				C1A71ADC17EA402300474BFD /* Task.h */,
-				C1A71ADD17EA402300474BFD /* Task.m */,
+				C1B3C55617EB8B6000E0C25F /* NotificationList.h */,
+				C1B3C55717EB8B6000E0C25F /* NotificationList.m */,
 			);
 			path = "ToDo List";
 			sourceTree = "<group>";
@@ -197,8 +196,7 @@
 				C1C18D7D17E909FF0042B751 /* testerAppDelegate.m in Sources */,
 				C1C18D8C17E909FF0042B751 /* ToDoViewController.m in Sources */,
 				C1C18D9417E90EDF0042B751 /* AddItemViewController.m in Sources */,
-				C1A71ADB17EA3F2100474BFD /* TaskList.m in Sources */,
-				C1A71ADE17EA402300474BFD /* Task.m in Sources */,
+				C1B3C55817EB8B6000E0C25F /* NotificationList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,10 +247,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "PROJECT_DIR=@\\\"\"$PROJECT_DIR\"\\\"";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -279,6 +274,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "PROJECT_DIR=@\\\"\"$PROJECT_DIR\"\\\"";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

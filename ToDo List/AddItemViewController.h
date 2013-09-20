@@ -7,13 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <sqlite3.h>
+#import "NotificationList.h"
 
 @interface AddItemViewController : UIViewController
 {
+    IBOutlet UITextField *taskText;
+    IBOutlet UIDatePicker *datePicker;
+    
+    NotificationList *notifs;
+    sqlite3 *taskDB;
+    NSString *dbPathString;
 }
+
+- (void)createOrOpenDB;
 
 - (IBAction)addItem:(id)sender;
 
 - (IBAction)taskEntered:(UITextField *)textField;
+
+- (void) scheduleNotification:(NSDate *) itemDate :(NSString *) task;
 
 @end
