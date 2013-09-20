@@ -15,7 +15,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ti8-aG-B1t">
                                 <items>
                                     <navigationItem title="Add Item" id="TNF-S4-utU">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="6Rt-mR-FlY">
+                                        <barButtonItem key="leftBarButtonItem" title="Go Back" id="6Rt-mR-FlY">
                                             <connections>
                                                 <segue destination="iuM-4y-gyg" kind="modal" id="02e-cF-tc6"/>
                                             </connections>
@@ -62,8 +62,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
-                                    <action selector="taskEntered:" destination="HnV-YX-l5m" eventType="touchUpOutside" id="Nmb-SL-45v"/>
+                                    <action selector="taskEntered:" destination="HnV-YX-l5m" eventType="touchUpInside" id="G6X-py-3xO"/>
                                     <action selector="taskEntered:" destination="HnV-YX-l5m" eventType="editingDidEndOnExit" id="hvW-nu-5vM"/>
+                                    <action selector="taskEntered:" destination="HnV-YX-l5m" eventType="touchUpOutside" id="pv5-XB-mbl"/>
+                                    <outlet property="delegate" destination="HnV-YX-l5m" id="Xcp-d3-1Om"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5u-8K-DtZ">
@@ -130,9 +132,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo List" id="srQ-nS-f9S">
-                        <barButtonItem key="leftBarButtonItem" title="Reload" id="S8j-f3-dxv">
+                        <barButtonItem key="leftBarButtonItem" title="Delete Mode" id="sr6-KV-ZXh">
                             <connections>
-                                <action selector="reloadTable" destination="L7M-K3-TC4" id="x8a-Rw-nxA"/>
+                                <action selector="deleteMode:" destination="L7M-K3-TC4" id="t40-71-vbH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="0uK-HR-FMd">
@@ -165,26 +167,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="900" y="120"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddItemViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addItem:"/>
-                <relationship kind="action" name="taskEntered:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="taskText" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ToDoViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="reloadTable"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

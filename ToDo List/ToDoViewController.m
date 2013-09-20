@@ -49,8 +49,7 @@
 
 - (void)createOrOpenDB
 {
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docPath = [path objectAtIndex:0];
+    NSString *docPath = PROJECT_DIR;
     
     dbPathString = [docPath stringByAppendingPathComponent:@"ToDoList.db"];
     
@@ -102,40 +101,86 @@
     // Open the database from the users filessytem
     if(sqlite3_open([dbPathString UTF8String], &taskDB) == SQLITE_OK)
     {
+        NSLog(@"The sql quey is, %@",[NSString stringWithFormat:@"SELECT * FROM TASKS WHERE ID=%d",(int)indexPath.row+1]);
+        
         // Setup the SQL Statement and compile it for faster access
-        const char *sqlStatement = [[NSString stringWithFormat:@"SELECT * FROM TASKS WHERE ID='%d'",indexPath.row] UTF8String];
+        const char *sqlStatement = [[NSString stringWithFormat:@"SELECT * FROM TASKS WHERE ID=%d",(int)indexPath.row+1] UTF8String];
         sqlite3_stmt *compiledStatement;
         
-        if(sqlite3_prepare_v2(taskDB, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+        if(sqlite3_prepare(taskDB, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+            
+            if (!compiledStatement)
+            {
+                NSLog(@"The compiled statement for the sql query is invalid");
+            }
             // Loop through the results and add them to the feeds array
             while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
                 
                 NSLog(@"Looking at a row");
+
+                //Task text label
+                UILabel *textView = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width/4,0,cell.frame.size.width-cell.frame.size.width/4,cell.frame.size.height)];
+                textView.text = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 2)];
+                textView.textColor = [UIColor blackColor];
+                textView.numberOfLines = 2;
+                textView.minimumScaleFactor = 8;
+                textView.font = [UIFont systemFontOfSize:16];
+                [cell.contentView addSubview:textView];
                 
-                // Read the data from the result row
-                NSString *date = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 1)];
-                NSString *task = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 2)];
+                //date text label
+                textView = [[UILabel alloc] initWithFrame:CGRectMake(0,0,cell.frame.size.width/4,cell.frame.size.height)];
+                textView.text = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 1)];
+                textView.textColor = [UIColor blackColor];
+                textView.numberOfLines = 2;
+                textView.minimumScaleFactor = 5;
+                textView.font = [UIFont systemFontOfSize:16];
+                [cell.contentView addSubview:textView];
                 
-                NSLog(@"task:%@",task);
-                NSLog(@"date:%@",date);
+                textView = nil;
                 
-                //Display the task that needs done.
-                [cell.textLabel setText:task];
-                
-                //Display the date and time the task needs done.
-                [cell.detailTextLabel setText:date];
-                
-                date = nil;
-                task = nil;
             }
+        }
+        else
+        {
+            NSLog(@"Something went wrong in populating the row, %d", indexPath.row + 1);
+            [cell.textLabel setText:@"DB couldn't find the task"];
+            [cell.detailTextLabel setText:@"DB couldn't find the date"];
         }
         // Release the compiled statement from memory
         sqlite3_finalize(compiledStatement);
         
+        sqlStatement = nil;
+        compiledStatement = nil;
     }
     sqlite3_close(taskDB);
     
     return cell;
+}
+
+- (IBAction)deleteMode:(id)sender
+{
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
+    NSLog(@"delete mode!");
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self deleteData:[NSString stringWithFormat:@"DELETE FROM TASKS WHERE ID=%d", indexPath.row+1]];
+        
+        [notifs cancelNotification:indexPath.row];
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+-(void)deleteData:(NSString *)deleteQuery
+{
+    char *error;
+    
+    if (sqlite3_exec(taskDB, [deleteQuery UTF8String], NULL, NULL, &error)==SQLITE_OK) {
+        NSLog(@"Person deleted");
+    }
 }
 
 - (IBAction)reloadTable

@@ -25,17 +25,7 @@ static NotificationList *sharedInstance;
     return sharedInstance;
 }
 
-- (void) dealloc
-{
-    for (int i = 0; i < [notifications count]; i++)
-    {
-        [notifications removeObjectAtIndex:i];
-    }
-    
-    notifications = nil;
-}
-
-- (void) addNotification:(NSCoder *)notif
+- (void) addNotification:(UILocalNotification *)notif
 {
     if (!notifications)
     {
@@ -49,31 +39,60 @@ static NotificationList *sharedInstance;
 
 - (void) cancelNotification:(int) index
 {
-    [[UIApplication sharedApplication] cancelLocalNotification:(UILocalNotification *)[notifications objectAtIndex:index]];
+    [[UIApplication sharedApplication] cancelLocalNotification:[notifications objectAtIndex:index]];
+    
+    [notifications removeObjectAtIndex:index];
 }
 
 //Only should be called once at startup.
 - (void) loadNotifications
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; 
     
-    for (int i = 0; i < [notifications count]; i++)
+    if (!notifications)
     {
-        [notifications addObject:[defaults objectForKey:[NSString stringWithFormat:@"notification:%d",i]]];
+        notifications = [[NSMutableArray alloc] init];
     }
+    
+    NSLog(@"%d notifications loaded", [defaults integerForKey:@"notification count"]);
+    
+    for (int i = 0; i < [defaults integerForKey:@"notification count"]; i++)
+    {
+        if ([defaults objectForKey:[NSString stringWithFormat:@"notification:%d",i]])
+        {
+            [notifications addObject:[NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:[NSString stringWithFormat:@"notification:%d",i]]]];
+        }
+    }
+    
+    defaults = nil;
 }
 
 //Only should be called once at shutdown.
 - (void) saveNotifications
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setInteger:[notifications count] forKey:@"notification count"];
+    
+    NSLog(@"%d notifications saved.", [notifications count]);
 
     for (int i = 0; i < [notifications count]; i++)
     {
-        [defaults setObject:[notifications objectAtIndex:i] forKey:[NSString stringWithFormat:@"notification:%d",i]];
+        [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:[notifications objectAtIndex:i]] forKey:[NSString stringWithFormat:@"notification:%d",i]];
     }
+    
+    NSLog(@"inserting stuff is done");
          
     [defaults synchronize];
+    
+    
+    for (int i = 0; i < [notifications count]; i++)
+    {
+        [notifications removeObjectAtIndex:i];
+    }
+    
+    notifications = nil;
+    defaults = nil;
 }
 
 - (int) len

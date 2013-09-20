@@ -46,6 +46,7 @@
 		C1C18D8B17E909FF0042B751 /* ToDoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoViewController.m; sourceTree = "<group>"; };
 		C1C18D9217E90EDF0042B751 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
 		C1C18D9317E90EDF0042B751 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		C1DC1D1A17ECF268009E00F3 /* LightSaber.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LightSaber.caf; sourceTree = "<group>"; };
 		C1E91D4717EBB27C0074B918 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -113,6 +114,7 @@
 		C1C18D7317E909FF0042B751 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1DC1D1A17ECF268009E00F3 /* LightSaber.caf */,
 				C1C18D7417E909FF0042B751 /* ToDo List-Info.plist */,
 				C1C18D7517E909FF0042B751 /* InfoPlist.strings */,
 				C1C18D7817E909FF0042B751 /* main.m */,

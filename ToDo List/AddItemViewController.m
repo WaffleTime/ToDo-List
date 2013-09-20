@@ -61,7 +61,7 @@
         
         //creat db here
         if (sqlite3_open(dbPath, &taskDB)==SQLITE_OK) {
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, TASK TEXT)";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE CHAR(15), TASK CHAR(15))";
             sqlite3_exec(taskDB, sql_stmt, NULL, NULL, &error);
             sqlite3_close(taskDB);
         }
@@ -73,7 +73,6 @@
 //  And it will save the data into a SQL database.
 - (IBAction)addItem:(id)sender
 {
-    
     NSLog(@"db not opened yet");
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -83,8 +82,6 @@
     dateFormatter.dateStyle = NSDateFormatterShortStyle;
     
     char *error;
-    
-    
     
     if (sqlite3_open([dbPathString UTF8String], &taskDB)==SQLITE_OK) {
         NSString *inserStmt = [NSString stringWithFormat:@"INSERT INTO TASKS(DATE,TASK) values ('%s', '%s')",[[dateFormatter stringFromDate:datePicker.date]UTF8String], [taskText.text UTF8String]];
@@ -106,8 +103,16 @@
 
 //This is called when the Task textfield is done entering text into it. The keyboard's return button and tapping outside of the
 //  screen will trigger this.
-- (IBAction)taskEntered:(UITextField *)textField {
+- (IBAction)taskEntered:(UITextField *)textField
+{
     [textField resignFirstResponder];
+}
+
+//A delegate method that is called by the UITextField when the user is entering text.
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSLog(@"delegate method for UITextField works!");
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return (newLength > 55) ? NO : YES;
 }
 
 

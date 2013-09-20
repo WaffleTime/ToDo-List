@@ -19,6 +19,12 @@
 
 - (void) createOrOpenDB;
 
+- (IBAction)deleteMode:(id)sender;
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;
+
+-(void)deleteData:(NSString *)deleteQuery;
+
 - (IBAction)reloadTable;
 
 
