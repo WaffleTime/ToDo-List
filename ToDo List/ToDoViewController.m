@@ -166,7 +166,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self deleteData:[NSString stringWithFormat:@"DELETE FROM TASKS WHERE ID=%d", indexPath.row+1]];
+        [self deleteData:[NSString stringWithFormat:@"DELETE * FROM TASKS WHERE ID=%d", indexPath.row+1]];
         
         [notifs cancelNotification:indexPath.row];
         
@@ -179,7 +179,11 @@
     char *error;
     
     if (sqlite3_exec(taskDB, [deleteQuery UTF8String], NULL, NULL, &error)==SQLITE_OK) {
-        NSLog(@"Person deleted");
+        NSLog(@"Task deleted");
+    }
+    else
+    {
+        NSLog(@"Task wasn't deleted!");
     }
 }
 

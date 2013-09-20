@@ -15,7 +15,7 @@
 
 + (NotificationList *) getSharedInstance;
 
-- (void) addNotification:(NSCoder  *)notif;
+- (void) addNotification:(UILocalNotification  *)notif;
 - (void) cancelNotification:(int) index;
 
 - (void) loadNotifications;

@@ -109,8 +109,10 @@
 }
 
 //A delegate method that is called by the UITextField when the user is entering text.
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSLog(@"delegate method for UITextField works!");
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    //NSLog(@"delegate method for UITextField works!");
+    
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     return (newLength > 55) ? NO : YES;
 }
@@ -144,7 +146,7 @@
     
     if (localNotif)
     {
-        [notifs addNotification:(NSCoder *)localNotif];
+        [notifs addNotification:localNotif];
     }
     
     // Schedule the notification
