@@ -28,10 +28,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
-    notifs = [NotificationList getSharedInstance];
     
     [self createOrOpenDB];
+    
+    NSLog(@"view did load");
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +42,6 @@
 
 - (void) dealloc
 {
-    notifs = nil;
     taskDB = nil;
     dbPathString = nil;
 }
@@ -61,7 +60,7 @@
         
         //creat db here
         if (sqlite3_open(dbPath, &taskDB)==SQLITE_OK) {
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE CHAR(15), TASK CHAR(15))";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY, DATE TEXT, TASK TEXT)";
             sqlite3_exec(taskDB, sql_stmt, NULL, NULL, &error);
             sqlite3_close(taskDB);
         }
@@ -73,32 +72,75 @@
 //  And it will save the data into a SQL database.
 - (IBAction)addItem:(id)sender
 {
-    NSLog(@"db not opened yet");
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
-    dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    dateFormatter.dateStyle = NSDateFormatterShortStyle;
-    
-    char *error;
-    
-    if (sqlite3_open([dbPathString UTF8String], &taskDB)==SQLITE_OK) {
-        NSString *inserStmt = [NSString stringWithFormat:@"INSERT INTO TASKS(DATE,TASK) values ('%s', '%s')",[[dateFormatter stringFromDate:datePicker.date]UTF8String], [taskText.text UTF8String]];
+    if (![taskText.text isEqualToString:@""])
+    {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         
-        NSLog(@"db opened");
+        dateFormatter.timeZone = [NSTimeZone defaultTimeZone];
+        dateFormatter.timeStyle = NSDateFormatterShortStyle;
+        dateFormatter.dateStyle = NSDateFormatterShortStyle;
         
-        const char *insert_stmt = [inserStmt UTF8String];
+        char *error;
         
-        if (sqlite3_exec(taskDB, insert_stmt, NULL, NULL, &error)==SQLITE_OK) {
-            NSLog(@"Task has been added");
+        if (sqlite3_open([dbPathString UTF8String], &taskDB)==SQLITE_OK)
+        {
+            //This will help us check to see if a db entry already exists.
+            const char *findStmt = [[NSString stringWithFormat:@"SELECT COUNT(*) FROM TASKS WHERE DATE='%@' AND TASK='%@'", [dateFormatter stringFromDate:datePicker.date], taskText.text] UTF8String];
+            sqlite3_stmt *compiledStatement;
             
-            [self scheduleNotification:datePicker.date :taskText.text];
+            if (sqlite3_prepare_v2(taskDB, findStmt, -1, &compiledStatement, NULL) == SQLITE_OK)
+            {
+                //Step through to count rows.
+                if (sqlite3_step(compiledStatement) != SQLITE_ERROR)
+                {
+                    //Check to see if there aren't any duplicates.
+                    if (sqlite3_column_int(compiledStatement, 0) == 0)
+                    {
+                        NSArray *notifs = [[UIApplication sharedApplication] scheduledLocalNotifications];
+                        
+                        NSString *inserStmt = [NSString stringWithFormat:@"INSERT INTO TASKS(ID,DATE,TASK) values ('%@', '%s', '%s')", [NSString stringWithFormat:@"%d", [notifs count]+1],[[dateFormatter stringFromDate:datePicker.date]UTF8String], [taskText.text UTF8String]];
+                        
+                        const char *insert_stmt = [inserStmt UTF8String];
+                        
+                        if (sqlite3_exec(taskDB, insert_stmt, NULL, NULL, &error)==SQLITE_OK)
+                        {
+                            NSLog(@"Task has been added");
+                            
+                            [self scheduleNotification:datePicker.date :taskText.text];
+                        }
+                        else
+                        {
+                            NSLog(@"Error with the insert query");
+                        }
+                    }
+                    else
+                    {
+                        NSLog(@"This will be a duplicate entry.");
+                    }
+                }
+                else
+                {
+                    NSLog(@"An error occured when stepping through the db.");
+                }
+            }
+            else
+            {
+                NSLog(@"Was not able to prepare the find statement for sqlite3.");
+            }
+            
+            sqlite3_finalize(compiledStatement);
+            sqlite3_close(taskDB);
+                
+            findStmt = nil;
+            compiledStatement = nil;
         }
-        sqlite3_close(taskDB);
+        else
+        {
+            NSLog(@"The database couldn't be opened!");
+        }
+        
+        dateFormatter = nil;
     }
-    
-    dateFormatter = nil;
 }
 
 //This is called when the Task textfield is done entering text into it. The keyboard's return button and tapping outside of the
@@ -138,16 +180,11 @@
     localNotif.alertBody = task;
     
     // Set the action button
-    localNotif.alertAction = @"View";
+    //localNotif.alertAction = @"ToDo";
     
-    localNotif.soundName = @"LightSaber.caf";
+    localNotif.soundName = UILocalNotificationDefaultSoundName; //@"LightSaber.caf";
     
-    localNotif.applicationIconBadgeNumber = 1;
-    
-    if (localNotif)
-    {
-        [notifs addNotification:localNotif];
-    }
+    localNotif.applicationIconBadgeNumber = [[UIApplication sharedApplication]applicationIconBadgeNumber]+1;
     
     // Schedule the notification
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];

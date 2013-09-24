@@ -8,16 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <sqlite3.h>
-#import "NotificationList.h"
 
 @interface ToDoViewController : UITableViewController
 {
-    NotificationList *notifs;
     sqlite3 *taskDB;
     NSString *dbPathString;
 }
 
 - (void) createOrOpenDB;
+
+- (void)updateDatabase;
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (IBAction)deleteMode:(id)sender;
 
@@ -25,7 +31,6 @@
 
 -(void)deleteData:(NSString *)deleteQuery;
 
-- (IBAction)reloadTable;
-
+-(void)reloadTable;
 
 @end

@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1B3C55817EB8B6000E0C25F /* NotificationList.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B3C55717EB8B6000E0C25F /* NotificationList.m */; };
 		C1C18D6D17E909FF0042B751 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D6C17E909FF0042B751 /* UIKit.framework */; };
 		C1C18D6F17E909FF0042B751 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D6E17E909FF0042B751 /* Foundation.framework */; };
 		C1C18D7117E909FF0042B751 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D7017E909FF0042B751 /* CoreGraphics.framework */; };
 		C1C18D7717E909FF0042B751 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C18D7517E909FF0042B751 /* InfoPlist.strings */; };
 		C1C18D7917E909FF0042B751 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C18D7817E909FF0042B751 /* main.m */; };
-		C1C18D7D17E909FF0042B751 /* testerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C18D7C17E909FF0042B751 /* testerAppDelegate.m */; };
+		C1C18D7D17E909FF0042B751 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C18D7C17E909FF0042B751 /* AppDelegate.m */; };
 		C1C18D7F17E909FF0042B751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C18D7E17E909FF0042B751 /* Default.png */; };
 		C1C18D8117E909FF0042B751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C18D8017E909FF0042B751 /* Default@2x.png */; };
 		C1C18D8317E909FF0042B751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C18D8217E909FF0042B751 /* Default-568h@2x.png */; };
@@ -25,8 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C1B3C55617EB8B6000E0C25F /* NotificationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationList.h; sourceTree = "<group>"; };
-		C1B3C55717EB8B6000E0C25F /* NotificationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationList.m; sourceTree = "<group>"; };
 		C1C18D6917E909FF0042B751 /* ToDo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C18D6C17E909FF0042B751 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C1C18D6E17E909FF0042B751 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -35,8 +32,8 @@
 		C1C18D7617E909FF0042B751 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C1C18D7817E909FF0042B751 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C1C18D7A17E909FF0042B751 /* ToDo List-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToDo List-Prefix.pch"; sourceTree = "<group>"; };
-		C1C18D7B17E909FF0042B751 /* testerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testerAppDelegate.h; sourceTree = "<group>"; };
-		C1C18D7C17E909FF0042B751 /* testerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testerAppDelegate.m; sourceTree = "<group>"; };
+		C1C18D7B17E909FF0042B751 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C1C18D7C17E909FF0042B751 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C1C18D7E17E909FF0042B751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		C1C18D8017E909FF0042B751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C1C18D8217E909FF0042B751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -96,8 +93,8 @@
 		C1C18D7217E909FF0042B751 /* ToDo List */ = {
 			isa = PBXGroup;
 			children = (
-				C1C18D7B17E909FF0042B751 /* testerAppDelegate.h */,
-				C1C18D7C17E909FF0042B751 /* testerAppDelegate.m */,
+				C1C18D7B17E909FF0042B751 /* AppDelegate.h */,
+				C1C18D7C17E909FF0042B751 /* AppDelegate.m */,
 				C1C18D8417E909FF0042B751 /* MainStoryboard_iPhone.storyboard */,
 				C1C18D8717E909FF0042B751 /* MainStoryboard_iPad.storyboard */,
 				C1C18D8A17E909FF0042B751 /* ToDoViewController.h */,
@@ -105,8 +102,6 @@
 				C1C18D7317E909FF0042B751 /* Supporting Files */,
 				C1C18D9217E90EDF0042B751 /* AddItemViewController.h */,
 				C1C18D9317E90EDF0042B751 /* AddItemViewController.m */,
-				C1B3C55617EB8B6000E0C25F /* NotificationList.h */,
-				C1B3C55717EB8B6000E0C25F /* NotificationList.m */,
 			);
 			path = "ToDo List";
 			sourceTree = "<group>";
@@ -195,10 +190,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C18D7917E909FF0042B751 /* main.m in Sources */,
-				C1C18D7D17E909FF0042B751 /* testerAppDelegate.m in Sources */,
+				C1C18D7D17E909FF0042B751 /* AppDelegate.m in Sources */,
 				C1C18D8C17E909FF0042B751 /* ToDoViewController.m in Sources */,
 				C1C18D9417E90EDF0042B751 /* AddItemViewController.m in Sources */,
-				C1B3C55817EB8B6000E0C25F /* NotificationList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

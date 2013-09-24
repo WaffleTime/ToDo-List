@@ -7,6 +7,7 @@
 //
 
 #import "ToDoViewController.h"
+#import "AppDelegate.h"
 
 @interface ToDoViewController ()
 
@@ -28,10 +29,12 @@
 {
     [super viewDidLoad];
     
-    //Grab the static task list.
-    notifs = [NotificationList getSharedInstance];
-    
     [self createOrOpenDB];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate->myViewController = self;
+    
+    NSLog(@"view did load");
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +45,6 @@
 
 - (void) dealloc
 {
-    notifs = nil;
     taskDB = nil;
     dbPathString = nil;
 }
@@ -61,14 +63,12 @@
         
         //creat db here
         if (sqlite3_open(dbPath, &taskDB)==SQLITE_OK) {
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY AUTOINCREMENT, DATE TEXT, TASK TEXT)";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY, DATE TEXT, TASK TEXT)";
             sqlite3_exec(taskDB, sql_stmt, NULL, NULL, &error);
             sqlite3_close(taskDB);
         }
     }
 }
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -78,10 +78,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"How many rows are there %d?", [notifs len]);
+    NSLog(@"How many rows are there %d?", [[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
     
     // Return the number of rows in the section.
-    return [notifs len];
+    return [[[UIApplication sharedApplication] scheduledLocalNotifications] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -101,18 +101,14 @@
     // Open the database from the users filessytem
     if(sqlite3_open([dbPathString UTF8String], &taskDB) == SQLITE_OK)
     {
-        NSLog(@"The sql quey is, %@",[NSString stringWithFormat:@"SELECT * FROM TASKS WHERE ID=%d",(int)indexPath.row+1]);
+        //NSLog(@"The sql query is, %@",[NSString stringWithFormat:@"SELECT * FROM TASKS WHERE ID=%d",(int)indexPath.row+1]);
         
         // Setup the SQL Statement and compile it for faster access
         const char *sqlStatement = [[NSString stringWithFormat:@"SELECT * FROM TASKS WHERE ID=%d",(int)indexPath.row+1] UTF8String];
         sqlite3_stmt *compiledStatement;
         
-        if(sqlite3_prepare(taskDB, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-            
-            if (!compiledStatement)
-            {
-                NSLog(@"The compiled statement for the sql query is invalid");
-            }
+        if(sqlite3_prepare(taskDB, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK)
+        {
             // Loop through the results and add them to the feeds array
             while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
                 
@@ -163,32 +159,51 @@
     NSLog(@"delete mode!");
 }
 
-//Make sure that this method updates the ID's of the subsequent rows in the database after removing one. Do this because the db rows are dependent on the index of the table's rows. And deleting a row will move cells up a row.
+
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self deleteData:[NSString stringWithFormat:@"DELETE * FROM TASKS WHERE ID=%d", indexPath.row+1]];
+        [self deleteData:[NSString stringWithFormat:@"DELETE FROM TASKS WHERE ID=%d", indexPath.row+1] :[NSString stringWithFormat:@"UPDATE TASKS SET ID=ID-1 WHERE ID>%d",indexPath.row+1]];
         
-        [notifs cancelNotification:indexPath.row];
+        NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+        [[UIApplication sharedApplication] cancelLocalNotification:[localNotifications objectAtIndex:indexPath.row]];
+        
+        localNotifications = nil;
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
--(void)deleteData:(NSString *)deleteQuery
+-(void)deleteData:(NSString *)deleteQuery :(NSString *) selectQuery
 {
-    char *error;
     
-    if (sqlite3_exec(taskDB, [deleteQuery UTF8String], NULL, NULL, &error)==SQLITE_OK) {
-        NSLog(@"Task deleted");
-    }
-    else
+    // Open the database from the users filessytem
+    if(sqlite3_open([dbPathString UTF8String], &taskDB) == SQLITE_OK)
     {
-        NSLog(@"Task wasn't deleted!");
+        char *error;
+        
+        if (sqlite3_exec(taskDB, [deleteQuery UTF8String], NULL, NULL, &error)==SQLITE_OK)
+        {
+            NSLog(@"Task deleted");
+            
+            
+            if (sqlite3_exec(taskDB, [selectQuery UTF8String], NULL, NULL, &error)==SQLITE_OK)
+            {
+                NSLog(@"Subsequent item's IDs have been updated.");
+            }
+            else
+            {
+                NSLog(@"Subsequent item's IDs have not been updated.");
+            }
+        }
+        else
+        {
+            NSLog(@"Task wasn't deleted!");
+        }
     }
 }
 
-- (IBAction)reloadTable
+-(void) reloadTable
 {
     [self.tableView reloadData];
 }
