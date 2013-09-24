@@ -63,7 +63,7 @@
         
         //creat db here
         if (sqlite3_open(dbPath, &taskDB)==SQLITE_OK) {
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY, DATE TEXT, TASK TEXT)";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY, DATE CHAR(25), TASK CHAR(100))";
             sqlite3_exec(taskDB, sql_stmt, NULL, NULL, &error);
             sqlite3_close(taskDB);
         }
@@ -119,7 +119,7 @@
                 textView.text = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 2)];
                 textView.textColor = [UIColor blackColor];
                 textView.numberOfLines = 2;
-                textView.minimumScaleFactor = 8;
+                textView.minimumScaleFactor = 8.0/[UIFont labelFontSize];
                 textView.font = [UIFont systemFontOfSize:16];
                 [cell.contentView addSubview:textView];
                 
@@ -128,7 +128,7 @@
                 textView.text = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 1)];
                 textView.textColor = [UIColor blackColor];
                 textView.numberOfLines = 2;
-                textView.minimumScaleFactor = 5;
+                textView.minimumScaleFactor = 8.0/[UIFont labelFontSize];
                 textView.font = [UIFont systemFontOfSize:16];
                 [cell.contentView addSubview:textView];
                 

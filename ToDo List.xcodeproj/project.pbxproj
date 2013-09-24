@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C10DD76817F21CF000D152F5 /* LightSaber.caf in Resources */ = {isa = PBXBuildFile; fileRef = C1DC1D1A17ECF268009E00F3 /* LightSaber.caf */; };
 		C1C18D6D17E909FF0042B751 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D6C17E909FF0042B751 /* UIKit.framework */; };
 		C1C18D6F17E909FF0042B751 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D6E17E909FF0042B751 /* Foundation.framework */; };
 		C1C18D7117E909FF0042B751 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C18D7017E909FF0042B751 /* CoreGraphics.framework */; };
@@ -179,6 +180,7 @@
 				C1C18D8317E909FF0042B751 /* Default-568h@2x.png in Resources */,
 				C1C18D8617E909FF0042B751 /* MainStoryboard_iPhone.storyboard in Resources */,
 				C1C18D8917E909FF0042B751 /* MainStoryboard_iPad.storyboard in Resources */,
+				C10DD76817F21CF000D152F5 /* LightSaber.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

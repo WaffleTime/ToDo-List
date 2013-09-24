@@ -60,7 +60,7 @@
         
         //creat db here
         if (sqlite3_open(dbPath, &taskDB)==SQLITE_OK) {
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY, DATE TEXT, TASK TEXT)";
+            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS TASKS (ID INTEGER PRIMARY KEY, DATE CHAR(25), TASK CHAR(100))";
             sqlite3_exec(taskDB, sql_stmt, NULL, NULL, &error);
             sqlite3_close(taskDB);
         }
@@ -156,7 +156,7 @@
     //NSLog(@"delegate method for UITextField works!");
     
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    return (newLength > 55) ? NO : YES;
+    return (newLength > 63) ? NO : YES;
 }
 
 
@@ -182,7 +182,7 @@
     // Set the action button
     //localNotif.alertAction = @"ToDo";
     
-    localNotif.soundName = UILocalNotificationDefaultSoundName; //@"LightSaber.caf";
+    localNotif.soundName = @"LightSaber.caf";
     
     localNotif.applicationIconBadgeNumber = [[UIApplication sharedApplication]applicationIconBadgeNumber]+1;
     

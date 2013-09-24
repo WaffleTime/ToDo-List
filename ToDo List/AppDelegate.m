@@ -73,12 +73,11 @@
     
     [self createOrOpenDBAndDelete:notification.alertBody :notification.fireDate];
     
-    // Request to reload table view data
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
+    NSArray *notifs = [[UIApplication sharedApplication] scheduledLocalNotifications];
     
-    // Set icon badge number to zero
-    application.applicationIconBadgeNumber = 0;
-     
+    application.applicationIconBadgeNumber = [notifs count];
+    
+    [myViewController reloadTable];
 }
 
 - (void)createOrOpenDBAndDelete:(NSString *) taskText :(NSDate *) taskDate

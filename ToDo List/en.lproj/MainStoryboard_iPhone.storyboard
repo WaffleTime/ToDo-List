@@ -58,11 +58,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                                 </timeZone>
                             </datePicker>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a task!" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8u4-dC-KxD">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a task!" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="8u4-dC-KxD">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
-                                    <action selector="taskEntered:" destination="HnV-YX-l5m" eventType="touchUpInside" id="G6X-py-3xO"/>
                                     <action selector="taskEntered:" destination="HnV-YX-l5m" eventType="editingDidEndOnExit" id="hvW-nu-5vM"/>
                                     <action selector="taskEntered:" destination="HnV-YX-l5m" eventType="touchUpOutside" id="pv5-XB-mbl"/>
                                     <outlet property="delegate" destination="HnV-YX-l5m" id="Xcp-d3-1Om"/>
@@ -135,7 +134,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZY-fa-aaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1281" y="120"/>
+            <point key="canvasLocation" x="1283" y="277"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5TF-TJ-4xq">
